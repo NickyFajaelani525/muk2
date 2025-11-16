@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kopika - Inovasi Kopi Nusantara | Company Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Definisi Palet Warna (Biru & Putih) */
+        :root {
+            --primary-blue: #0D47A1; /* Biru Tua/Navy - Kekuatan & Kepercayaan */
+            --secondary-blue: #42A5F5; /* Biru Cerah - Inovasi & Kesegaran */
+            --light-bg: #F5F5F5; /* Abu-abu terang untuk latar belakang */
+            --white: #FFFFFF;
+            --text-dark: #212121;
+        }
+
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        body { color: var(--text-dark); background-color: var(--white); }
+        a { text-decoration: none; color: var(--primary-blue); transition: color 0.3s; }
+        a:hover { color: var(--secondary-blue); }
+        h1, h2, h3 { color: var(--primary-blue); }
+        
+        /* Layout Utama */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        section {
+            padding: 80px 0;
+        }
+        
+        /* --- Navbar --- */
+        .navbar {
+            background-color: var(--white);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+        .nav-links a {
+            padding: 10px 15px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        .nav-links a:hover {
+            color: var(--secondary-blue);
+        }
+        .cta-nav {
+            background-color: var(--primary-blue);
+            color: var(--white) !important;
+            padding: 8px 18px;
+            border-radius: 5px;
+            margin-left: 15px;
+            transition: background-color 0.3s;
+        }
+        .cta-nav:hover {
+            background-color: var(--secondary-blue);
+        }
+        .menu-toggle { display: none; font-size: 24px; cursor: pointer; }
+
+        /* --- Hero Section --- */
+        .hero {
+            background-color: var(--light-bg);
+            padding-top: 150px;
+            padding-bottom: 80px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            min-height: 80vh;
+        }
+        .hero-text {
+            max-width: 600px;
+        }
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--text-dark); /* Headline di Hero lebih baik gelap */
+        }
+        .hero span {
+            color: var(--primary-blue);
+        }
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: #666;
+        }
+        .hero-img {
+            flex-grow: 1;
+            text-align: right;
+        }
+        .hero-img img {
+            max-width: 90%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* --- Section Visi Misi --- */
+        .vision {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            text-align: center;
+        }
+        .vision h2 {
+            color: var(--white);
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+        }
+        .vm-grid {
+            display: flex;
+            gap: 40px;
+            text-align: left;
+        }
+        .vm-item {
+            flex: 1;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+        .vm-item h3 {
+            color: var(--secondary-blue);
+            margin-bottom: 10px;
+        }
+
+        /* --- Section Produk Unggulan --- */
+        .products {
+            text-align: center;
+            background-color: var(--white);
+        }
+        .products h2 {
+            margin-bottom: 50px;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .product-card {
+            background-color: var(--light-bg);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        .product-card h3 {
+            margin: 15px 0 10px;
+        }
+        .product-card img {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+        
+        /* --- Footer --- */
+        .footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.9rem;
+        }
+
+        /* --- Media Queries (Responsiveness) --- */
+        @media (max-width: 900px) {
+            .hero { flex-direction: column; text-align: center; }
+            .hero-img { text-align: center; margin-top: 30px; }
+            .hero-text { max-width: 100%; }
+            .vm-grid { flex-direction: column; }
+        }
+        
+        @media (max-width: 600px) {
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; right: 0; background-color: var(--white); box-shadow: 0 5px 5px rgba(0, 0, 0, 0.05); }
+            .nav-links.active { display: flex; }
+            .nav-links a { color: var(--text-dark); border-bottom: 1px solid var(--light-bg); }
+            .menu-toggle { display: block; }
+            .nav-content { padding: 10px 20px; }
+            .hero h1 { font-size: 2.5rem; }
+            section { padding: 50px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container nav-content">
+            <div class="logo"><a href="#home">Kopika.idn</a></div>
+            
+            <nav>
+                <ul class="nav-links" id="navMenu">
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#vision">Profil</a></li>
+                    <li><a href="#products">Produk</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                    <li><a href="#contact" class="cta-nav">Bergabung</a></li>
+                </ul>
+            </nav>
+            
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container" style="display: flex; align-items: center; flex-wrap: wrap;">
+            <div class="hero-text">
+                <h1>Kopi Nusantara, <br><span>Inovasi</span> Digital.</h1>
+                <p>Kopika adalah startup kopi yang menggabungkan warisan rasa kopi Indonesia dengan teknologi modern untuk pengalaman yang lebih cepat, segar, dan berkelanjutan.</p>
+                <a href="#vision" class="cta-nav" style="padding: 12px 25px; font-size: 1.1rem; display: inline-block;">
+                    Pelajari Lebih Lanjut
+                </a>
+            </div>
+            <div class="hero-img">
+                <img src="https://picsum.photos/600/400?random=1" alt="Ilustrasi Kopi Inovatif Kopika">
+            </div>
+        </div>
+    </section>
+
+    <section class="vision" id="vision">
+        <div class="container">
+            <h2>Visi & Nilai Inti Kopika</h2>
+            <div class="vm-grid">
+                <div class="vm-item">
+                    <h3>Visi</h3>
+                    <p>Menjadi brand kopi modern terdepan yang memberdayakan petani lokal dan mengubah cara masyarakat menikmati kopi.</p>
+                </div>
+                <div class="vm-item">
+                    <h3>Misi</h3>
+                    <p>Menyajikan biji kopi berkualitas tinggi, mengedepankan keberlanjutan, dan memanfaatkan teknologi untuk efisiensi layanan.</p>
+                </div>
+                <div class="vm-item">
+                    <h3>Nilai Inti</h3>
+                    <p>Kualitas (Quality), Inovasi (Innovation), Berkelanjutan (Sustainability), dan Kemitraan (Partnership).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="products" id="products">
+        <div class="container">
+            <h2>Produk Unggulan Kami</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="https://picsum.photos/300/200?random=2" alt="Signature Cold Brew">
+                    <h3>Signature Cold Brew</h3>
+                    <p>Proses seduh dingin 12 jam. Rasa lebih halus, kaya, dan rendah asam. Tersedia dalam kemasan botol ramah lingkungan.</p>
+                    <a href="#" style="font-weight: 600;">Lihat Detail →</a>
+                </div>
+                <div class="product-card">
+                    <img src="https://picsum.photos/300/200?random=3" alt="Biji Kopi Single Origin">
+                    <h3>Biji Kopi Single Origin</h3>
+                    <p>Pilihan biji Arabika dan Robusta terbaik dari Toraja dan Gayo. Langsung dari petani binaan Kopika.</p>
+                    <a href="#" style="font-weight: 600;">Lihat Detail →</a>
+                </div>
+                <div class="product-card">
+                    <img src="https://picsum.photos/300/200?random=4" alt="Kopika App">
+                    <h3>Layanan Kopika App</h3>
+                    <p>Pesan, bayar, dan lacak pesanan Anda dengan mudah melalui aplikasi mobile kami. Dapatkan poin eksklusif.</p>
+                    <a href="#" style="font-weight: 600;">Download Sekarang →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" style="background-color: var(--secondary-blue); text-align: center; color: var(--white);">
+        <div class="container">
+            <h2 style="color: var(--white); margin-bottom: 20px;">Siap Menjadi Mitra Kopika?</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 30px;">Mari berkolaborasi untuk memajukan industri kopi Indonesia. Hubungi tim kemitraan kami hari ini.</p>
+            <a href="mailto:halo@kopika.id" class="cta-nav" style="background-color: var(--white); color: var(--primary-blue) !important; padding: 15px 35px; font-size: 1.2rem;">
+                Hubungi Kami Sekarang
+            </a>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        <p>&copy; 2025 Kopika. Inovasi Kopi Nusantara. | Ikuti kami di [Social Media Icons]</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
